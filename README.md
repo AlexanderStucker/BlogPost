@@ -1,64 +1,51 @@
-<<<<<<< HEAD
-# BlogPost
-=======
-# blog.post
+# Project Title
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+A brief description of what this project does and who it's for
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+# Quarkus-Projekt BlogPost
 
-## Running the application in dev mode
+## Beschreibung
+TBD
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+## Features
+TBD
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+## Technologien
+- **Quarkus**
+- **Maven** 
+- **Java**
 
-## Packaging and running the application
+## Installation & Anwendung starten
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+### Schritte zur Einrichtung
+1. **Repository klonen:**
+   Klonen Sie das Repository auf Ihren lokalen Rechner, indem Sie folgenden Befehl ausführen:
+   ```bash
+   git clone https://github.com/AlexanderStucker/BlogPost.git
+   cd [Projektverzeichnis]
+   ```
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+2. Abhängigkeiten installieren:
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+    ```bash
+    ./mvnw clean install
+    ```
+3. Anwendung Starten: 
+    ```bash
+    ./mvnw compile quarkus:dev
+    ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+## Weitere nützliche Commands
 
-## Creating a native executable
+Tests überspringen: 
+  ```bash
+  ./mvnw quarkus:dev -DskipTests
+  ```
+Abhängigkeiten aktualisieren
+  ```bash
+  ./mvnw versions:display-dependency-updates
+  ```
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Dnative
-```
+## Links
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/blog.post-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Related Guides
-
-- REST JSON-B ([guide](https://quarkus.io/guides/rest#json-serialisation)): JSON-B serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
->>>>>>> 48912ec (Initial commit)
+ - [Quarkus Documentation](https://quarkus.io/guides/)
