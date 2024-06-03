@@ -4,7 +4,7 @@
 TBD
 
 ## Features
-TBD
+- Erstellen, Lesen, Aktualisieren von Blog-Posts
 
 ## Technologien
 - **Quarkus**
