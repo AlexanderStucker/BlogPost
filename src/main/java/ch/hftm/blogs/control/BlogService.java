@@ -1,9 +1,9 @@
-package ch.hftm.control;
+package ch.hftm.blogs.control;
 
 import java.util.List;
 
-import ch.hftm.entity.Blog;
-import ch.hftm.repository.BlogRepository;
+import ch.hftm.blogs.entity.Blog;
+import ch.hftm.blogs.repository.BlogRepository;
 import io.quarkus.logging.Log;
 
 import jakarta.enterprise.context.Dependent;
@@ -26,5 +26,13 @@ public class BlogService {
     public void addBlog(Blog blog) {
         Log.info("Adding blog " + blog.getTitle());
         blogRepository.persist(blog);
+    }
+
+    @Transactional
+    public void updateBlog(Long id, Blog updatedBlog){
+        Blog existingBlog = blogRepository.findById(id);
+        existingBlog.setTitle(updatedBlog.getTitle());
+        existingBlog.setContent(updatedBlog.getContent());
+        blogRepository.persist(existingBlog);
     }
 }

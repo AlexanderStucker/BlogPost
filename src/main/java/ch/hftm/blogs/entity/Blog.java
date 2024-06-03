@@ -1,4 +1,4 @@
-package ch.hftm.entity;
+package ch.hftm.blogs.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,7 +1,7 @@
 package ch.hftm.initialization;
 
-import ch.hftm.entity.Blog;
-import ch.hftm.repository.BlogRepository;
+import ch.hftm.blogs.entity.Blog;
+import ch.hftm.blogs.repository.BlogRepository;
 import io.quarkus.runtime.StartupEvent;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;

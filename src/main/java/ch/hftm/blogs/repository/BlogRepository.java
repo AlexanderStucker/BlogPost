@@ -1,6 +1,6 @@
-package ch.hftm.repository;
+package ch.hftm.blogs.repository;
 
-import ch.hftm.entity.Blog;
+import ch.hftm.blogs.entity.Blog;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
