@@ -43,7 +43,10 @@ public class BlogService {
     @Transactional
     public void deleteBlog(String title) {
         Blog blogToDelete = blogRepository.find("title", title).firstResult();
-        Log.info("Deleting blog " + blogToDelete.getTitle());
-        blogRepository.delete(blogToDelete);
+        if(blogToDelete != null){
+            Log.info("Deleting blog " + blogToDelete.getTitle());
+            blogRepository.delete(blogToDelete);
+        }
+        Log.info("Blog not found");
         }
 }
