@@ -10,6 +10,7 @@ import io.quarkus.logging.Log;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.WebApplicationException;
 
 @Dependent
 public class BlogService {
@@ -46,7 +47,9 @@ public class BlogService {
         if(blogToDelete != null){
             Log.info("Deleting blog " + blogToDelete.getTitle());
             blogRepository.delete(blogToDelete);
-        }
-        Log.info("Blog not found");
+        }else{
+            Log.info("Blog not found");
+            throw new WebApplicationException("Blog with title not found.", 404);
+            }
         }
 }
