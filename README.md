@@ -4,7 +4,7 @@
 TBD
 
 ## Features
-- Erstellen, Lesen, Aktualisieren von Blog-Posts
+- Erstellen, Lesen, Aktualisieren und Löschen von Blog-Posts
 
 ## Technologien
 - **Quarkus**
