@@ -3,6 +3,7 @@ package ch.hftm.blogs.control;
 import java.util.List;
 
 import ch.hftm.blogs.entity.Blog;
+import ch.hftm.blogs.repository.AutorRepository;
 import ch.hftm.blogs.repository.BlogRepository;
 import io.quarkus.logging.Log;
 
@@ -15,6 +16,9 @@ public class BlogService {
 
     @Inject
     BlogRepository blogRepository;
+
+    @Inject
+    AutorRepository autorRepository;
 
     public List<Blog> getBlogs() {
         var blogs = blogRepository.listAll();
@@ -34,5 +38,12 @@ public class BlogService {
         existingBlog.setTitle(updatedBlog.getTitle());
         existingBlog.setContent(updatedBlog.getContent());
         blogRepository.persist(existingBlog);
-    }
+        }
+
+    @Transactional
+    public void deleteBlog(String title) {
+        Blog blogToDelete = blogRepository.find("title", title).firstResult();
+        Log.info("Deleting blog " + blogToDelete.getTitle());
+        blogRepository.delete(blogToDelete);
+        }
 }
