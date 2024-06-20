@@ -1,25 +1,19 @@
 package ch.hftm.blogs.control;
-
 import java.util.List;
 
 import ch.hftm.blogs.entity.Blog;
-import ch.hftm.blogs.repository.AutorRepository;
 import ch.hftm.blogs.repository.BlogRepository;
 import io.quarkus.logging.Log;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.WebApplicationException;
-import jakarta.ws.rs.core.Response;
 
 @Dependent
 public class BlogService {
 
     @Inject
     BlogRepository blogRepository;
-
-    @Inject
-    AutorRepository autorRepository;
 
     public List<Blog> getBlogs() {
         var blogs = blogRepository.listAll();
