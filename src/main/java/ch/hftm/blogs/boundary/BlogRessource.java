@@ -2,15 +2,20 @@ package ch.hftm.blogs.boundary;
 
 import java.util.List;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+
 import ch.hftm.blogs.control.BlogService;
 import ch.hftm.blogs.entity.Blog;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 @Path("blogs")
 public class BlogRessource {
@@ -19,22 +24,38 @@ public class BlogRessource {
   BlogService blogService;
 
   @GET
+  @Operation(summary = "Auflistung aller Blog-Einträge")
   public List<Blog> getBlogs(){
     return blogService.getBlogs();
   }
 
   @POST
+  @Operation(summary = "Erstellen eines Blog-Eintrags")
   public void addBlog(Blog blog){
     blogService.addBlog(blog);
   }
   
   @PUT
+  @Operation(summary = "Vollständige Aktualisierung eines Blog-Eintrags")
   @Path("{id}")
   public void updateBlog(Long id, Blog updatedBlog){
     blogService.updateBlog(id, updatedBlog);
     }
-    
+  
+  @PATCH
+  @Operation(summary = "Teilweise Aktualisierung eines Blog-Eintrags")
+  @Path("{id}")
+  public Response updateBlogPartial(@PathParam("id") Long id, Blog update){
+    if(update != null){
+      blogService.updateBlog(id, update);
+    } else{
+      return Response.status(Status.NOT_FOUND).entity("Blog nicht aktualisiert").build(); 
+    }
+    return Response.status(Status.OK).entity("Blog aktualisiert").build();
+  }
+
   @DELETE
+  @Operation(summary = "Löschen eines Blog-Eintrags")
   @Path("{title}")
   public void deleteBlog(@PathParam("title") String title){
     blogService.deleteBlog(title);
