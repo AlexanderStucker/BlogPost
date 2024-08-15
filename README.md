@@ -42,6 +42,23 @@ Abhängigkeiten aktualisieren
   ./mvnw versions:display-dependency-updates
   ```
 
+## Berechtigungskonzept für die Blog-API
+
+### Öffentliche Methoden
+- **GET /blogs**: Öffentlich zugänglich. Zeigt eine Liste aller Blogs.
+- **GET /blogs/{id}**: Öffentlich zugänglich. Zeigt Details zu einem bestimmten Blog.
+
+### Benutzerrollen
+- **Gast**: Hat nur Lesezugriff auf öffentliche Methoden.
+- **Benutzer**: Kann eigene Blogs erstellen und bearbeiten.
+- **Admin**: Hat volle Kontrolle über alle Blogs und Benutzer.
+
+### Methoden mit Login- oder Rollenanforderungen
+- **POST /blogs**: Erfordert Login und Rolle "Benutzer" oder "Admin".
+- **PUT /blogs/{id}**: Erfordert Login und Rolle "Benutzer" (für eigene Blogs) oder "Admin".
+- **PATCH /blogs/{id}**: Erfordert Login und Rolle "Benutzer" (für eigene Blogs) oder "Admin".
+- **DELETE /blogs/{title}**: Erfordert Rolle "Admin". (Vielleicht auch auf Benutzer ausweiten für eigene Blogs?)
+
 ## Links
 
  - [Quarkus Documentation](https://quarkus.io/guides/)
