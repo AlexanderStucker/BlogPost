@@ -18,6 +18,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
+import io.quarkus.logging.Log;
 
 @Path("blogs")
 public class BlogRessource {
@@ -29,7 +30,12 @@ public class BlogRessource {
   @PermitAll
   @Operation(summary = "Auflistung aller Blog-Einträge")
   public List<Blog> getBlogs(){
-    return blogService.getBlogs();
+    Log.info("Request to fetch all blog entries received");
+    Log.debug("Debug message");
+    Log.error("Bug!");
+    List<Blog> blogs = blogService.getBlogs();
+    Log.infof("TEST Returning %d blogs", blogs.size());
+    return blogs;
   }
 
   @POST
